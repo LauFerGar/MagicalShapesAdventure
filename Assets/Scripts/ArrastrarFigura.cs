@@ -15,19 +15,20 @@ public class ArrastrarFigura : MonoBehaviour
     {
         arCamera = Camera.main;
         initialPosition = transform.localPosition; //Guardamos la posición inicial de la figura
-        Debug.Log(initialPosition);
+        //Debug.Log(initialPosition);
+
     }
     void OnMouseDown()
     {
         isDragging = true;
-        offset = transform.position - GetTouchPosition();
+        offset = transform.localPosition - GetTouchPosition();
     }
 
     void OnMouseDrag()
     {
         if (isDragging)
         {
-            transform.position = GetTouchPosition() + offset;
+            transform.localPosition = GetTouchPosition() + offset;
         }
     }
 
@@ -50,4 +51,5 @@ public class ArrastrarFigura : MonoBehaviour
 
         return Vector3.zero;
     }
+
 }
