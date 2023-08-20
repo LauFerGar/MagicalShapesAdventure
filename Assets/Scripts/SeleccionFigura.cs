@@ -5,14 +5,12 @@ using UnityEngine;
 public class SeleccionFigura : MonoBehaviour
 {
     private bool isSelected = false;
-    private Material cubeMaterial;
     private Material originalMaterial;
-    public Material selectedMaterial;  // Asigna el nuevo material en el Inspector
+    public Material selectedMaterial;
 
     private void Start()
     {
-        cubeMaterial = GetComponent<Renderer>().material;
-        originalMaterial = cubeMaterial;
+        originalMaterial = GetComponent<Renderer>().material;
     }
 
     private void OnMouseDown()
@@ -21,13 +19,18 @@ public class SeleccionFigura : MonoBehaviour
 
         if (isSelected)
         {
-            cubeMaterial = selectedMaterial;
+            GetComponent<Renderer>().material = selectedMaterial;
+            DialogoJuegoBuscar dialogoJuegoB = FindObjectOfType<DialogoJuegoBuscar>();
+
+            if (dialogoJuegoB != null)
+            {
+                dialogoJuegoB.VerificarSeleccion(gameObject);
+                //Debug.Log(gameObject);
+            }
         }
         else
         {
-            cubeMaterial = originalMaterial;
+            GetComponent<Renderer>().material = originalMaterial;
         }
-
-        GetComponent<Renderer>().material = cubeMaterial;
     }
 }

@@ -1125,7 +1125,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: f5e70b692f804d346a44df961b6ad5a8, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: f5e70b692f804d346a44df961b6ad5a8, type: 3}
       propertyPath: m_LocalScale.x
@@ -2070,7 +2070,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1600687127}
-  m_RootOrder: 5
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &577809935
 MonoBehaviour:
@@ -2161,7 +2161,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: f5e70b692f804d346a44df961b6ad5a8, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: f5e70b692f804d346a44df961b6ad5a8, type: 3}
       propertyPath: m_LocalScale.x
@@ -2270,6 +2270,7 @@ GameObject:
   - component: {fileID: 701275135}
   - component: {fileID: 701275134}
   - component: {fileID: 701275137}
+  - component: {fileID: 701275138}
   m_Layer: 0
   m_Name: Tablero
   m_TagString: Untagged
@@ -2368,6 +2369,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06cf8d6ef88bf81438f62544ae8f11b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  figuras:
+  - {fileID: 658844729}
+  - {fileID: 329307644}
+  - {fileID: 1642765793}
+  - {fileID: 2107190486}
+  - {fileID: 577809933}
+  - {fileID: 874828614}
+  - {fileID: 2077495859}
+  - {fileID: 2140034587}
+  - {fileID: 1850610949}
+  - {fileID: 1535082448}
+  - {fileID: 1865683310}
+  - {fileID: 1441778897}
+  - {fileID: 1661877877}
+  - {fileID: 178179808}
+  - {fileID: 207609062}
+  - {fileID: 950311275}
+--- !u!114 &701275138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 701275132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7a8ed7ce3107024483a2393948041db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textoDialogo: {fileID: 1854349152}
   figuras:
   - {fileID: 658844729}
   - {fileID: 329307644}
@@ -3822,7 +3853,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1346869381}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5201,11 +5232,11 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 701275133}
+  - {fileID: 577809934}
   - {fileID: 658844728}
   - {fileID: 329307643}
   - {fileID: 1642765792}
   - {fileID: 2107190485}
-  - {fileID: 577809934}
   - {fileID: 874828615}
   - {fileID: 2077495860}
   - {fileID: 2140034588}
@@ -5252,7 +5283,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: f5e70b692f804d346a44df961b6ad5a8, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: f5e70b692f804d346a44df961b6ad5a8, type: 3}
       propertyPath: m_LocalScale.x
@@ -6131,7 +6162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa4deb80ee4a2054488e0bdb17209311, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedMaterial: {fileID: 2100000, guid: 6b5fa903dab815f4baa33ff5667b09bc, type: 2}
+  selectedMaterial: {fileID: 2100000, guid: 7cb79dccd73e04741acf67e09edb3532, type: 2}
 --- !u!135 &1865683313
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -6895,7 +6926,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: f5e70b692f804d346a44df961b6ad5a8, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: f5e70b692f804d346a44df961b6ad5a8, type: 3}
       propertyPath: m_LocalScale.x
