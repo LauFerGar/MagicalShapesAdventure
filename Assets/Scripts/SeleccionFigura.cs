@@ -10,16 +10,16 @@ public class SeleccionFigura : MonoBehaviour
 
     private void Start()
     {
-        originalMaterial = GetComponent<Renderer>().material;
+        //originalMaterial = GetComponent<Renderer>().material;
     }
 
     private void OnMouseDown()
     {
-        isSelected = !isSelected;
+        //isSelected = !isSelected;
 
-        if (isSelected)
-        {
-            GetComponent<Renderer>().material = selectedMaterial;
+        //if (isSelected)
+        //{
+            //GetComponent<Renderer>().material = selectedMaterial;
             DialogoJuegoBuscar dialogoJuegoB = FindObjectOfType<DialogoJuegoBuscar>();
 
             if (dialogoJuegoB != null)
@@ -27,10 +27,10 @@ public class SeleccionFigura : MonoBehaviour
                 dialogoJuegoB.VerificarSeleccion(gameObject);
                 //Debug.Log(gameObject);
             }
-        }
-        else
+       // }
+        /*else
         {
             GetComponent<Renderer>().material = originalMaterial;
-        }
+        }*/
     }
 }

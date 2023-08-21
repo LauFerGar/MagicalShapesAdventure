@@ -2416,6 +2416,9 @@ MonoBehaviour:
   - {fileID: 178179808}
   - {fileID: 207609062}
   - {fileID: 950311275}
+  dialogo: {fileID: 1346869384}
+  volverJuegos: {fileID: 1806651880}
+  generarPos: {fileID: 701275137}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0

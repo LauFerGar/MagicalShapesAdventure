@@ -11,7 +11,7 @@ public class GenerarPosiciones : MonoBehaviour
     //Creamos Array para poner las posiciones que se van ocupando cuando ponemos las figuras en el tablero
     private bool[] posicionesOcupadas;
 
-    private void Start()
+    public void Start()
     {
         InicializarPosicionesTablero();
         InicializarPosicionesOcupadas();
@@ -81,4 +81,16 @@ public class GenerarPosiciones : MonoBehaviour
     {
         posicionesOcupadas[index] = true;
     }
+
+    public void GenerarPosicionesAleatorias()
+    {
+        InicializarPosicionesOcupadas();
+
+
+        foreach (GameObject figura in figuras)
+        {
+            AsignarPosicionAleatoria(figura);
+        }
+    }
+
 }

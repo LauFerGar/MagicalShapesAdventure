@@ -9,12 +9,16 @@ public class DialogoJuegoBuscar : MonoBehaviour
     public GameObject[] figuras;
     private List<GameObject> figurasAleatorias = new List<GameObject>();
     private int indiceActual = 0;
-    //private bool esperandoToque = false;
+    public Button dialogo, volverJuegos;
+    public GenerarPosiciones generarPos;
 
     private void Start()
     {
         GenerarFigurasAleatorias();
         MostrarNuevoDialogo();
+
+        dialogo.onClick.AddListener(SeguirDialogo);
+        volverJuegos.onClick.AddListener(ReseteoFiguras);
     }
 
     private void GenerarFigurasAleatorias()
@@ -40,36 +44,39 @@ public class DialogoJuegoBuscar : MonoBehaviour
         Debug.Log(figuraSeleccionada + "   " + figurasAleatorias[indiceActual]);
         if (indiceActual < figurasAleatorias.Count && figuraSeleccionada == figurasAleatorias[indiceActual])
         {
-            Debug.Log("Figuras Iguales");
-            //textoDialogo.text = "¡Genial! ¡La has encontrado!";
-            Debug.Log("Genial");
-            indiceActual++;
-            if (Input.GetMouseButtonDown(0))
+            //Debug.Log("Figuras Iguales");
+            if (indiceActual == figurasAleatorias.Count)
             {
                 MostrarNuevoDialogo();
             }
+            else
+            {
+                textoDialogo.text = "¡Genial! ¡Pulsa aqui para buscar la siguiente!";
+                indiceActual++;
+                generarPos.GenerarPosicionesAleatorias();
+                
+            }
+            //Debug.Log("Genial");
+
         }
         else
         {
-            Debug.Log("No son figuras iguales");
-            //textoDialogo.text = "Vuelve a intentarlo. Toca la pantalla para continuar.";
-            Debug.Log("Volver a intentar");
-            if (Input.GetMouseButtonDown(0))
-            {
-                MostrarNuevoDialogo();
-            }
-            //esperandoToque = true;
+            //Debug.Log("No son figuras iguales");
+            textoDialogo.text = "Vuelve a intentarlo. Toca la pantalla para continuar.";
+            //Debug.Log("Volver a intentar");
+
         }
     }
 
-    /*private void Update()
+    private void SeguirDialogo()
     {
-        if (esperandoToque && Input.GetMouseButtonDown(0))
-        {
-            esperandoToque = false;
-            MostrarNuevoDialogo();
-        }
-    }*/
+        MostrarNuevoDialogo();
+    }
+
+    private void ReseteoFiguras()
+    {
+        generarPos.GenerarPosicionesAleatorias();
+    }
 
 }
 
