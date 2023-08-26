@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig>
   <Tracking>
+    <ImageTarget name="Juego_Sonido" size="5.000000 5.000000" />
     <ImageTarget name="Juego_Buscar" size="5.000000 3.333333" />
   </Tracking>
 </QCARConfig>

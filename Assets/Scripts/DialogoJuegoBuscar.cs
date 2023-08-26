@@ -24,7 +24,7 @@ public class DialogoJuegoBuscar : MonoBehaviour
     private void GenerarFigurasAleatorias()
     {
         figurasAleatorias.AddRange(figuras);
-        figurasAleatorias.Shuffle(); // Mezcla la lista de figuras de manera aleatoria
+        figurasAleatorias.MezclaFiguras(); // Mezcla la lista de figuras de manera aleatoria
     }
 
     private void MostrarNuevoDialogo()
@@ -81,9 +81,9 @@ public class DialogoJuegoBuscar : MonoBehaviour
 }
 
 // Nueva clase para generar de manera aleatoria las figuras qu se van a ir pidiendo
-public static class ListExtensions
+public static class Listas
 {
-    public static void Shuffle<T>(this IList<T> list)
+    public static void MezclaFiguras<T>(this IList<T> list)
     {
         int n = list.Count;
         while (n > 1)

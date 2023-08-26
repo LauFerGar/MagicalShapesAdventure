@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class SeleccionFigura : MonoBehaviour
 {
-    private bool isSelected = false;
-    private Material originalMaterial;
-    public Material selectedMaterial;
+    //private bool isSelected = false;
+    //private Material originalMaterial;
+    //public Material selectedMaterial;
 
     private void Start()
     {
