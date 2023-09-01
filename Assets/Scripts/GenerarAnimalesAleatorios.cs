@@ -6,22 +6,36 @@ public class GenerarAnimalesAleatorios : MonoBehaviour
 {
     public Transform grass;
     private GameObject[] todosLosAnimales;
-    
+    public GameObject play;
+    private AnimacionBoton animacionBoton;
+    private Vector3[] posicionesAnimales;
+    private int indicePosicion = 0;
+
     // Start is called before the first frame update
     void Start()
     {
+        InicializarPosicionesPlano();
+        animacionBoton = play.GetComponent<AnimacionBoton>();
         todosLosAnimales = new GameObject[grass.childCount];
         for (int i = 0; i < grass.childCount; i++)
         {
             todosLosAnimales[i] = grass.GetChild(i).gameObject;
         }
         
-        GameObject[] animalesAleatorios = GenerarAnimalesAleatoriosArray(todosLosAnimales, 1);
+        GameObject[] animalesAleatorios = GenerarAnimalesAleatoriosArray(todosLosAnimales, 6);
+
+        animacionBoton.animalesOK = animalesAleatorios;
 
         foreach (GameObject animal in todosLosAnimales)
         {
             bool activar = ArrayContains(animal, animalesAleatorios);
             animal.SetActive(activar);
+
+            if (activar)
+            {
+                animal.transform.localPosition = posicionesAnimales[indicePosicion];
+                indicePosicion++;
+            }
         }
 
         foreach (GameObject animal in animalesAleatorios)
@@ -55,6 +69,19 @@ public class GenerarAnimalesAleatorios : MonoBehaviour
             }
         }
         return false;
+    }
+
+    private void InicializarPosicionesPlano()
+    {
+        posicionesAnimales = new Vector3[]
+        {
+            new Vector3(-2.42000008f,0.0320000015f,2.77999997f), //Vaca
+            new Vector3(-2.67000008f,0,0), //Caballo
+            new Vector3(3.36999989f,0,3.19000006f), //Elefante
+            new Vector3(-2.59899998f,0.0309999995f,-2.98000002f), //Rana
+            new Vector3(2.63000011f,0.0839999989f,-1.96700001f), //Pato
+            new Vector3(1.76999998f,0.0149999997f,0.239999995f) //Perro
+        };
     }
 
 }
