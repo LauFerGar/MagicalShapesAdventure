@@ -11,8 +11,9 @@ public class JuegoMemoria : MonoBehaviour
 
     private int tiempoRestante = 11;
     private bool juegoIniciado = false;
-    private Text contadorTexto;
     private Vector3[] posicionesIniciales;
+
+    private GameObject animalSeleccionadoEnAltar;
 
     private void Awake()
     {
@@ -25,10 +26,6 @@ public class JuegoMemoria : MonoBehaviour
         contador.onClick.AddListener(ComenzarJuego);
 
         posicionesIniciales = new Vector3[animales.Length];
-        /*for (int i = 0; i<animales.Length; i++)
-        {
-            posicionesIniciales[i] = animales[i].transform.localPosition;
-        }*/
 
         PosicionarAnimalesAleatoriamente();
     }
@@ -102,5 +99,46 @@ public class JuegoMemoria : MonoBehaviour
             animales[i].transform.localPosition = posicionesAltar[indicePosicion];
 
         }
+    }
+
+    private void Update()
+    {
+        // Verifica si el usuario hizo clic en el tablero.
+        if (Input.GetMouseButtonDown(0))
+        {
+            RaycastHit hit;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            if (Physics.Raycast(ray, out hit))
+            {
+                // Si el rayo golpea el tablero, encuentra y devuelve el animal seleccionado en el altar.
+                if (hit.collider.gameObject == gameObject)
+                {
+                    DevolverAnimalSeleccionadoAlTablero();
+                }
+            }
+        }
+    }
+
+    private void DevolverAnimalSeleccionadoAlTablero()
+    {
+        /*// Busca el animal seleccionado en el altar y lo devuelve al tablero.
+        foreach (GameObject animal in animales)
+        {
+            AnimalSeleccionadoMemoria animalScript = animal.GetComponent<AnimalSeleccionadoMemoria>();
+            if (animalScript != null && animalScript.enElAltar)
+            {
+                animalScript.DevolverAlTablero();
+                break; // Detiene la búsqueda después de devolver el primer animal seleccionado.
+            }
+        }*/
+
+        animalSeleccionadoEnAltar.GetComponent<AnimalSeleccionadoMemoria>().DevolverAlTablero();
+
+    }
+
+    public void AnimalSeleccionadoEnAltar(GameObject animal)
+    {
+        animalSeleccionadoEnAltar = animal;
     }
 }
