@@ -9,7 +9,6 @@ public class SeleccionarAltar : MonoBehaviour
 
     public Material materialSeleccionado;
 
-
     void Start()
     {
         //Guardamos el material original del altar antes de ser seleccionado
@@ -18,11 +17,18 @@ public class SeleccionarAltar : MonoBehaviour
 
     private void OnMouseDown()
     {
+        if (GetComponent<Renderer>().material == materialOriginal)
+        {
+            // Almacena el altar seleccionado.
+            altarSeleccionado = gameObject;
+        }
+        else
+        {
+            altarSeleccionado = null;
+        }
+
         // Cambia el material cuando se hace clic en el altar.
         CambiarMaterial();
-
-        // Almacena el altar seleccionado.
-        altarSeleccionado = gameObject;
     }
 
     public void CambiarMaterial()
@@ -59,13 +65,17 @@ public class SeleccionarAltar : MonoBehaviour
 
     public GameObject ObtenerAltarSeleccionado()
     {
+        
         return altarSeleccionado;
     }
 
     public void DeseleccionarAltar()
     {
+        //Debug.Log("Altar " + this.name + " deseleccionado");
+
         // Restaura el material y anula la selección del altar.
         altarSeleccionado = null;
+
         RestaurarMaterial();
     }
 

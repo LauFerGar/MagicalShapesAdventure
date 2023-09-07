@@ -7,13 +7,20 @@ public class JuegoMemoria : MonoBehaviour
 {
     public Vector3[] posicionesAltar;
     public GameObject[] animales;
+    public GameObject[] altares;
     public Button contador;
+    public bool haFallado = false;
+
+    public Material materialAltarAcierto;
+    public Material materialAltarError;
 
     private int tiempoRestante = 11;
     private bool juegoIniciado = false;
     private Vector3[] posicionesIniciales;
-
     private GameObject animalSeleccionadoEnAltar;
+    private bool animalesEnAltar = true;
+    private int animalesCorrectos = 0;
+    private bool finalizado = false;
 
     private void Awake()
     {
@@ -22,6 +29,13 @@ public class JuegoMemoria : MonoBehaviour
 
     void Start()
     {
+        Collider tableroBoxCollider = GetComponent<BoxCollider>();
+        Collider tableroMeshCollider = GetComponent<MeshCollider>();
+        if (tableroBoxCollider != null && tableroMeshCollider !=null)
+        {
+            tableroBoxCollider.enabled = false;
+            tableroMeshCollider.enabled = false;
+        }
 
         contador.onClick.AddListener(ComenzarJuego);
 
@@ -55,7 +69,15 @@ public class JuegoMemoria : MonoBehaviour
             for (int i = 0; i<animales.Length; i++)
             {
                 animales[i].transform.localPosition = posicionesIniciales[i];
+                animales[i].GetComponent<BoxCollider>().enabled = true;
             }
+
+            for (int i = 0; i<altares.Length; i++)
+            {
+                altares[i].GetComponent<BoxCollider>().enabled = true;
+            }
+
+            animalesEnAltar = false;
         }
     }
 
@@ -97,12 +119,37 @@ public class JuegoMemoria : MonoBehaviour
 
             //Asignamos el animal al altar
             animales[i].transform.localPosition = posicionesAltar[indicePosicion];
-
+            animales[i].GetComponent<AnimalSeleccionadoMemoria>().posicionAltarQueHaTocado = posicionesAltar[indicePosicion];
         }
     }
 
     private void Update()
     {
+        Collider tableroBoxCollider = GetComponent<BoxCollider>();
+        Collider tableroMeshCollider = GetComponent<MeshCollider>();
+        if (!haFallado)
+        {
+            tableroBoxCollider.enabled = false;
+            tableroMeshCollider.enabled = false;
+        }
+        else
+        {
+            tableroBoxCollider.enabled = true;
+            tableroMeshCollider.enabled = true;
+        }
+
+        if (animalesEnAltar)
+        {
+            for (int i =0; i<animales.Length; i++)
+            {
+                animales[i].GetComponent<BoxCollider>().enabled = false;
+            }
+            for (int i = 0; i < altares.Length; i++)
+            {
+                altares[i].GetComponent<BoxCollider>().enabled = false;
+            }
+        }
+        
         // Verifica si el usuario hizo clic en el tablero.
         if (Input.GetMouseButtonDown(0))
         {
@@ -111,8 +158,8 @@ public class JuegoMemoria : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit))
             {
-                // Si el rayo golpea el tablero, encuentra y devuelve el animal seleccionado en el altar.
-                if (hit.collider.gameObject == gameObject)
+                // Si el dedo golpea el tablero, encuentra y devuelve el animal seleccionado en el altar.
+                if (hit.collider.gameObject == gameObject && finalizado==false)
                 {
                     DevolverAnimalSeleccionadoAlTablero();
                 }
@@ -122,23 +169,33 @@ public class JuegoMemoria : MonoBehaviour
 
     private void DevolverAnimalSeleccionadoAlTablero()
     {
-        /*// Busca el animal seleccionado en el altar y lo devuelve al tablero.
-        foreach (GameObject animal in animales)
+        //animalSeleccionadoEnAltar.GetComponent<AnimalSeleccionadoMemoria>().DevolverAlTablero();
+
+        AnimalSeleccionadoMemoria animalSeleccionado = animalSeleccionadoEnAltar.GetComponentInChildren<AnimalSeleccionadoMemoria>();
+        if (animalSeleccionado != null && animalSeleccionado.enElAltar)
         {
-            AnimalSeleccionadoMemoria animalScript = animal.GetComponent<AnimalSeleccionadoMemoria>();
-            if (animalScript != null && animalScript.enElAltar)
-            {
-                animalScript.DevolverAlTablero();
-                break; // Detiene la búsqueda después de devolver el primer animal seleccionado.
-            }
-        }*/
-
-        animalSeleccionadoEnAltar.GetComponent<AnimalSeleccionadoMemoria>().DevolverAlTablero();
-
+            animalSeleccionado.DevolverAlTablero();
+        }
     }
 
     public void AnimalSeleccionadoEnAltar(GameObject animal)
     {
         animalSeleccionadoEnAltar = animal;
+    }
+
+    public void AnimalColocadoEnAltarCorrecto()
+    {
+        animalesCorrectos++;
+
+        if (animalesCorrectos == animales.Length)
+        {
+            for (int i =0; i<animales.Length; i++)
+            {
+                animales[i].GetComponent<BoxCollider>().enabled = false;
+            }
+
+            finalizado = true;
+            Debug.Log("¡Has colocado todos los animales en el altar correcto! Juego terminado.");
+        }
     }
 }

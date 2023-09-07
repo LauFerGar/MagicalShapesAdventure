@@ -5,14 +5,17 @@ using UnityEngine;
 public class AnimalSeleccionadoMemoria : MonoBehaviour
 {
     public bool enElAltar = false;
-    private Material materialAltarOriginal;
+    public Vector3 posicionAltarQueHaTocado;
+    public GameObject[] altares;
+
     private Vector3 posicionOriginal;
-    private SeleccionarAltar altarOcupadoConAnimal;
+    private GameObject altarOcupadoConAnimal;
 
     private void Awake()
     {
         //Guardamos la posición original del animal
         posicionOriginal = transform.localPosition;
+
     }
 
     private void OnMouseDown()
@@ -21,36 +24,66 @@ public class AnimalSeleccionadoMemoria : MonoBehaviour
         {
             // Comprueba si hay un altar seleccionado.
             SeleccionarAltar[] altares = FindObjectsOfType<SeleccionarAltar>();
+
             foreach (SeleccionarAltar altar in altares)
             {
                 GameObject altarSeleccionado = altar.ObtenerAltarSeleccionado();
                 if (altarSeleccionado != null)
                 {
-                    // Coloca el animal en el altar seleccionado.
-                    Transform posicionAltar = altarSeleccionado.transform;
-                    transform.position = posicionAltar.position;
-                    enElAltar = true;
+                    if (posicionAltarQueHaTocado == altarSeleccionado.transform.localPosition)
+                    {
+                        // Colocamos el animal en el altar seleccionado.
+                        Transform posicionAltar = altarSeleccionado.transform;
+                        transform.localPosition = posicionAltar.localPosition;
+                        enElAltar = true;
+                        if (posicionAltarQueHaTocado == posicionAltar.localPosition)
+                        {
+                            Debug.Log("Has acertado el animal " + gameObject.name + " en el altar");
 
-                    // Restaura el material del altar y deselecciónalo.
-                    altar.DeseleccionarAltar(); // Llama al nuevo método DeseleccionarAltar.
+                            // Notificamos a JuegoMemoria que un animal fue colocado correctamente
+                            JuegoMemoria juegoMem = GetComponentInParent<JuegoMemoria>();
+                            juegoMem.AnimalColocadoEnAltarCorrecto();
+
+                            altarSeleccionado.GetComponent<Renderer>().material = juegoMem.materialAltarAcierto;
+                        }
+                        else
+                        {
+                            Debug.Log("No has acertado el animal");
+                            JuegoMemoria juegoMem = GetComponentInParent<JuegoMemoria>();
+                            juegoMem.haFallado = true;
+
+                            altarSeleccionado.GetComponent<Renderer>().material = juegoMem.materialAltarError;
+                        }
+
+                        // Restaura el material del altar y deselecciónalo.
+                        //altar.DeseleccionarAltar(); // Llama al nuevo método DeseleccionarAltar.
+                    }
+                    else
+                    {
+                        Debug.Log("No has acertado el animal");
+                        JuegoMemoria juegoMem = GetComponentInParent<JuegoMemoria>();
+                        juegoMem.haFallado = true;
+
+                        altarSeleccionado.GetComponent<Renderer>().material = juegoMem.materialAltarError;
+                    }
+
                 }
             }
         }
         else
         {
-            SeleccionarAltar[] altares = FindObjectsOfType<SeleccionarAltar>();
-            foreach (SeleccionarAltar altar in altares)
+
+            JuegoMemoria juegoMem = GetComponentInParent<JuegoMemoria>();
+            foreach (GameObject altar in altares)
             {
-                GameObject altarAnimal = altar.gameObject;
-                Vector3 posicionAltarAnimal = altarAnimal.transform.localPosition;
-                if (altarAnimal != null && posicionAltarAnimal == this.transform.localPosition)
+                if (altar != null && transform.localPosition == altar.transform.localPosition)
                 {
-                    altar.CambiarMaterial();
+                    juegoMem.AnimalSeleccionadoEnAltar(this.gameObject);
+                    altar.GetComponent<SeleccionarAltar>().CambiarMaterial();
                     altarOcupadoConAnimal = altar;
-                    JuegoMemoria juegoMem = GetComponentInParent<JuegoMemoria>();
-                    juegoMem.AnimalSeleccionadoEnAltar(gameObject);
                 }
             }
+
         }
         
     }
@@ -62,7 +95,7 @@ public class AnimalSeleccionadoMemoria : MonoBehaviour
         enElAltar = false;
 
         //Cambiamos color del altar
-        altarOcupadoConAnimal.CambiarMaterial();
+        altarOcupadoConAnimal.GetComponent<SeleccionarAltar>().DeseleccionarAltar();
     }
 
 }
