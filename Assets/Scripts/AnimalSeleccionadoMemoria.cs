@@ -7,8 +7,8 @@ public class AnimalSeleccionadoMemoria : MonoBehaviour
     public bool enElAltar = false;
     public Vector3 posicionAltarQueHaTocado;
     public GameObject[] altares;
+    public Vector3 posicionOriginal;
 
-    private Vector3 posicionOriginal;
     private GameObject altarOcupadoConAnimal;
 
     private void Awake()

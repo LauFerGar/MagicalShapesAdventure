@@ -6,6 +6,8 @@ public class SeleccionarAltar : MonoBehaviour
 {
     private Material materialOriginal;
     private GameObject altarSeleccionado;
+    private JuegoMemoria juegoMem;
+    private int nivelJuego;
 
     public Material materialSeleccionado;
 
@@ -13,6 +15,9 @@ public class SeleccionarAltar : MonoBehaviour
     {
         //Guardamos el material original del altar antes de ser seleccionado
         materialOriginal = GetComponent<Renderer>().material;
+
+        juegoMem = GetComponentInParent<JuegoMemoria>();
+        nivelJuego = juegoMem.nivel;
     }
 
     private void OnMouseDown()
@@ -77,6 +82,17 @@ public class SeleccionarAltar : MonoBehaviour
         altarSeleccionado = null;
 
         RestaurarMaterial();
+    }
+
+    void Update()
+    {
+        if (nivelJuego != juegoMem.nivel)
+        {
+            DeseleccionarAltar();
+            Debug.Log("Altares deseleccionador por finalizacion de partida");
+
+            nivelJuego = juegoMem.nivel;
+        }
     }
 
 }
