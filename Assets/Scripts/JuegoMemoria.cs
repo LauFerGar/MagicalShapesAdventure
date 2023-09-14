@@ -8,13 +8,15 @@ public class JuegoMemoria : MonoBehaviour
     public Vector3[] posicionesAltar;
     public GameObject[] animales;
     public GameObject[] altares;
-    public Button contador;
     public bool haFallado = false;
     public bool finalizado = false;
     public int nivel = 1;
 
     public Material materialAltarAcierto;
     public Material materialAltarError;
+
+    public Button JuegoBuscar, JuegoSonido, JuegoMem, BotonVolver, DialogoMem, PausaMem, contador;
+    public Image FondoJuego;
 
     private int tiempoRestante = 11;
     private bool juegoIniciado = false;
@@ -24,6 +26,8 @@ public class JuegoMemoria : MonoBehaviour
     private int animalesCorrectos = 0;
     private List<GameObject> animalesEnJuego = new List<GameObject>();
     private List<int> indicesSeleccionados = new List<int>();
+    private int indiceAnimalExtra;
+
 
     private void Awake()
     {
@@ -58,7 +62,6 @@ public class JuegoMemoria : MonoBehaviour
 
         for (int i = 0; i<4; i++)
         {
-            //int indiceAleatorio = Random.Range(0, animales.Length);
             int indiceAleatorio;
 
             do
@@ -68,8 +71,6 @@ public class JuegoMemoria : MonoBehaviour
             while (indicesSeleccionados.Contains(indiceAleatorio));
 
             GameObject animalSeleccionado = animales[indiceAleatorio];
-
-            //Debug.Log("Animal Seleccionado: " + animalSeleccionado.name);
 
             animalSeleccionado.SetActive(true);
 
@@ -105,11 +106,35 @@ public class JuegoMemoria : MonoBehaviour
 
             for (int i = 0; i < animalesEnJuego.Count; i++)
             {
-                /*animales[i].transform.localPosition = posicionesIniciales[i];
-                animales[i].GetComponent<BoxCollider>().enabled = true;*/
-
                 animalesEnJuego[i].transform.localPosition = animalesEnJuego[i].GetComponent<AnimalSeleccionadoMemoria>().posicionOriginal;
                 animalesEnJuego[i].GetComponent<BoxCollider>().enabled = true;
+            }
+
+            if (nivel >= 3)
+            {
+                int cantidadAnimalesExtra = nivel - 2;
+
+                for (int i = 0; i < cantidadAnimalesExtra; i++)
+                {
+                    int indiceAleatorio;
+
+                    do
+                    {
+                        indiceAleatorio = Random.Range(0, animales.Length);
+                    }
+                    while (indicesSeleccionados.Contains(indiceAleatorio));
+
+                    GameObject animalSeleccionado = animales[indiceAleatorio];
+
+                    animalSeleccionado.SetActive(true);
+
+                    // Añadimos el animal seleccionado
+                    animalesEnJuego.Add(animalSeleccionado);
+                    indicesSeleccionados.Add(indiceAleatorio);
+
+                    animalSeleccionado.transform.localPosition = animalSeleccionado.GetComponent<AnimalSeleccionadoMemoria>().posicionOriginal;
+                    animalSeleccionado.GetComponent<BoxCollider>().enabled = true;
+                }
             }
 
             for (int i = 0; i < altares.Length; i++)
@@ -208,7 +233,6 @@ public class JuegoMemoria : MonoBehaviour
 
     private void DevolverAnimalSeleccionadoAlTablero()
     {
-        //animalSeleccionadoEnAltar.GetComponent<AnimalSeleccionadoMemoria>().DevolverAlTablero();
 
         AnimalSeleccionadoMemoria animalSeleccionado = animalSeleccionadoEnAltar.GetComponentInChildren<AnimalSeleccionadoMemoria>();
         if (animalSeleccionado != null && animalSeleccionado.enElAltar)
@@ -226,9 +250,7 @@ public class JuegoMemoria : MonoBehaviour
     {
         animalesCorrectos++;
 
-        //Debug.Log( animalesCorrectos + " animales correctos");
-
-        if (animalesCorrectos == animalesEnJuego.Count)
+        if (animalesCorrectos == 4)
         {
             for (int i = 0; i < animalesEnJuego.Count; i++)
             {
@@ -236,7 +258,7 @@ public class JuegoMemoria : MonoBehaviour
             }
 
             finalizado = true;
-            Debug.Log("¡Has colocado todos los animales en el altar correcto! Juego terminado.");
+            Debug.Log("¡Has colocado todos los animales en el altar correcto! Partida terminado.");
         }
 
         //Verificamos si el juego ha finalizado para volcer a mostrar el cartel indicando que se puede comenzar el siguiente nivel
@@ -255,23 +277,36 @@ public class JuegoMemoria : MonoBehaviour
         animalesCorrectos = 0;
         nivel++;
 
-        if (nivel < 3)
+        if (nivel <= 5)
         {
             contador.gameObject.SetActive(true);
             contador.GetComponentInChildren<Text>().text = "Next Lvl";
 
             foreach (GameObject animal in animales)
             {
-                animal.GetComponent<Renderer>().enabled = false;
+                animal.SetActive(false);
             }
+
+            animalesEnJuego.Clear();
+            indicesSeleccionados.Clear();
 
             for (int i = 0; i < 4; i++)
             {
-                int indiceAleatorio = Random.Range(0, animales.Length);
+                int indiceAleatorio;
+
+                do
+                {
+                    indiceAleatorio = Random.Range(0, animales.Length);
+                }
+                while (indicesSeleccionados.Contains(indiceAleatorio));
+
                 GameObject animalSeleccionado = animales[indiceAleatorio];
+
+                animalSeleccionado.SetActive(true);
 
                 //Añadimos el animal seleccionado
                 animalesEnJuego.Add(animalSeleccionado);
+                indicesSeleccionados.Add(indiceAleatorio);
             }
 
             PosicionarAnimalesAleatoriamente();
@@ -280,11 +315,83 @@ public class JuegoMemoria : MonoBehaviour
             contador.onClick.AddListener(ComenzarJuego);
         }
         else
-        {
+        {          
             contador.gameObject.SetActive(true);
             contador.GetComponentInChildren<Text>().text = "Finalizado";
 
-            contador.interactable = false;
+            contador.onClick.RemoveListener(ComenzarJuego);
+            contador.onClick.AddListener(FinalizarJuego);
         }
+    }
+
+    private void FinalizarJuego()
+    {
+        finalizado = false;
+        juegoIniciado = false;
+        tiempoRestante = 11;
+        animalesCorrectos = 0;
+        nivel = 0;
+        haFallado = false;
+
+        FondoJuego.gameObject.SetActive(true);
+        JuegoBuscar.gameObject.SetActive(true);
+        JuegoSonido.gameObject.SetActive(true);
+        JuegoMem.gameObject.SetActive(true);
+        BotonVolver.gameObject.SetActive(true);
+
+        DialogoMem.gameObject.SetActive(false);
+        contador.GetComponentInChildren<Text>().text = "Comenzar";
+        contador.gameObject.SetActive(false);
+        PausaMem.gameObject.SetActive(false);
+
+        Collider tableroBoxCollider = GetComponent<BoxCollider>();
+        Collider tableroMeshCollider = GetComponent<MeshCollider>();
+        if (tableroBoxCollider != null && tableroMeshCollider != null)
+        {
+            tableroBoxCollider.enabled = false;
+            tableroMeshCollider.enabled = false;
+        }
+
+        animalesEnJuego.Clear();
+        indicesSeleccionados.Clear();
+
+        contador.onClick.RemoveListener(FinalizarJuego);
+        contador.onClick.AddListener(ComenzarJuego);
+
+        posicionesIniciales = new Vector3[animales.Length];
+
+        //Nos aseguramos que existen 8 animales en el tablero
+        if (animales.Length < 8)
+        {
+            Debug.LogError("No hay suficientes animales disponibles");
+            return;
+        }
+
+        foreach (GameObject animal in animales)
+        {
+            animal.SetActive(false);
+        }
+
+        for (int i = 0; i < 4; i++)
+        {
+            int indiceAleatorio;
+
+            do
+            {
+                indiceAleatorio = Random.Range(0, animales.Length);
+            }
+            while (indicesSeleccionados.Contains(indiceAleatorio));
+
+            GameObject animalSeleccionado = animales[indiceAleatorio];
+
+            animalSeleccionado.SetActive(true);
+
+            //Añadimos el animal seleccionado
+            animalesEnJuego.Add(animalSeleccionado);
+            indicesSeleccionados.Add(indiceAleatorio);
+        }
+
+        PosicionarAnimalesAleatoriamente();
+
     }
 }

@@ -4501,12 +4501,19 @@ MonoBehaviour:
   - {fileID: 789643631}
   - {fileID: 81077552}
   - {fileID: 709727715}
-  contador: {fileID: 1785894291}
   haFallado: 0
   finalizado: 0
   nivel: 1
   materialAltarAcierto: {fileID: 2100000, guid: ed943c64a18e2b642b460a35d4d19cd7, type: 2}
   materialAltarError: {fileID: 2100000, guid: 05c3fe12048409847984488a7d84fc3a, type: 2}
+  JuegoBuscar: {fileID: 1455147407}
+  JuegoSonido: {fileID: 1873902298}
+  JuegoMem: {fileID: 377998609}
+  BotonVolver: {fileID: 452013378}
+  DialogoMem: {fileID: 366268816}
+  PausaMem: {fileID: 568349895}
+  contador: {fileID: 1785894291}
+  FondoJuego: {fileID: 708207919}
 --- !u!65 &506901806
 BoxCollider:
   m_ObjectHideFlags: 0
