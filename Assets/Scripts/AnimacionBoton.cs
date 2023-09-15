@@ -14,6 +14,7 @@ public class AnimacionBoton : MonoBehaviour
     public Button pausaSonido, juegoBuscar, juegoSonidos, juegoMemoria, volver, botonDialogo;
     public Image fondo;
     public Text dialogo;
+    public Canvas canvas;
 
     private int adivinar;
     private int indiceSonidos = 0;
@@ -132,7 +133,7 @@ public class AnimacionBoton : MonoBehaviour
     }
 
 
-    private void FinJuego()
+    public void FinJuego()
     {
         indiceSonidos = 0;
         audiosSeleccionados.Clear(); ;
@@ -140,7 +141,12 @@ public class AnimacionBoton : MonoBehaviour
         botonDialogo.gameObject.SetActive(false);
         pausaSonido.gameObject.SetActive(false);
 
-        dialogo.text = "Pulsa PLAY para reproducir el sonido del animal que tienes que encontrar";
+        dialogo.text = "Pulsa PLAY para reproducir el sonido";
+
+        if (canvas.GetComponent<AudioSource>().enabled == false)
+        {
+            canvas.GetComponent<AudioSource>().enabled = true;
+        }
 
         fondo.gameObject.SetActive(true);
         juegoBuscar.gameObject.SetActive(true);
