@@ -143,11 +143,6 @@ public class AnimacionBoton : MonoBehaviour
 
         dialogo.text = "Pulsa PLAY para reproducir el sonido";
 
-        if (canvas.GetComponent<AudioSource>().enabled == false)
-        {
-            canvas.GetComponent<AudioSource>().enabled = true;
-        }
-
         fondo.gameObject.SetActive(true);
         juegoBuscar.gameObject.SetActive(true);
         juegoMemoria.gameObject.SetActive(true);

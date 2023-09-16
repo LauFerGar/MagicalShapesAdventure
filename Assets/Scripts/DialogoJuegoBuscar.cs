@@ -53,7 +53,7 @@ public class DialogoJuegoBuscar : MonoBehaviour
             }
             else
             {
-                textoDialogo.text = "¡Genial! ¡Pulsa aqui para buscar la siguiente!";
+                textoDialogo.text = "¡Genial! ¡Pulsa aqui para buscar!";
                 indiceActual++;
                 generarPos.GenerarPosicionesAleatorias();
                 
@@ -62,7 +62,7 @@ public class DialogoJuegoBuscar : MonoBehaviour
         }
         else
         {
-            textoDialogo.text = "Vuelve a intentarlo. Toca la pantalla para continuar.";
+            textoDialogo.text = "Vuelve a intentarlo.";
 
         }
     }

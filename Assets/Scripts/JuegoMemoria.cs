@@ -259,7 +259,7 @@ public class JuegoMemoria : MonoBehaviour
             }
 
             finalizado = true;
-            Debug.Log("¡Has colocado todos los animales en el altar correcto! Partida terminado.");
+            //Debug.Log("¡Has colocado todos los animales en el altar correcto! Partida terminado.");
         }
 
         //Verificamos si el juego ha finalizado para volcer a mostrar el cartel indicando que se puede comenzar el siguiente nivel
@@ -278,10 +278,10 @@ public class JuegoMemoria : MonoBehaviour
         animalesCorrectos = 0;
         nivel++;
 
-        if (nivel <= 2)
+        if (nivel <= 5)
         {
             contador.gameObject.SetActive(true);
-            contador.GetComponentInChildren<Text>().text = "Nivel " + nivel+1;
+            contador.GetComponentInChildren<Text>().text = "Nivel " + nivel;
 
             foreach (GameObject animal in animales)
             {
