@@ -498,7 +498,7 @@ Transform:
   m_GameObject: {fileID: 81077552}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.11, y: 0.053, z: -3.48}
-  m_LocalScale: {x: 2.2206104, y: 0.08659638, z: 2.2206104}
+  m_LocalScale: {x: 2.2206104, y: 0.0009939532, z: 2.2206104}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 506901801}
@@ -2037,7 +2037,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: bc0cdff0b0fdafc46bbdbda4b3717d71, type: 3}
       propertyPath: m_Name
-      value: EstrellaMorada
+      value: Estrella Morada
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: bc0cdff0b0fdafc46bbdbda4b3717d71, type: 3}
       propertyPath: m_RootOrder
@@ -2320,7 +2320,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: bc0cdff0b0fdafc46bbdbda4b3717d71, type: 3}
       propertyPath: m_Name
-      value: EstrellaRosa
+      value: Estrella Rosa
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: bc0cdff0b0fdafc46bbdbda4b3717d71, type: 3}
       propertyPath: m_RootOrder
@@ -3541,7 +3541,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: f5e70b692f804d346a44df961b6ad5a8, type: 3}
       propertyPath: m_Name
-      value: CorazonAzul
+      value: Corazon Azul
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: f5e70b692f804d346a44df961b6ad5a8, type: 3}
       propertyPath: m_RootOrder
@@ -5886,7 +5886,7 @@ GameObject:
   - component: {fileID: 577809936}
   - component: {fileID: 577809935}
   m_Layer: 0
-  m_Name: CuboAzul
+  m_Name: Cubo Azul
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6533,7 +6533,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: f5e70b692f804d346a44df961b6ad5a8, type: 3}
       propertyPath: m_Name
-      value: CorazonRosa
+      value: Corazon Rosa
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: f5e70b692f804d346a44df961b6ad5a8, type: 3}
       propertyPath: m_RootOrder
@@ -7289,7 +7289,7 @@ Transform:
   m_GameObject: {fileID: 709727715}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.55, y: 0.053, z: -3.48}
-  m_LocalScale: {x: 2.2206104, y: 0.08659638, z: 2.2206104}
+  m_LocalScale: {x: 2.2206104, y: 0.000668957, z: 2.2206104}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 506901801}
@@ -7503,11 +7503,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'NIVEL 3
-
-
-
-    MEMORIA'
+  m_text: MEMORIZA LOS ANIMALES
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -8417,7 +8413,7 @@ Transform:
   m_GameObject: {fileID: 789643631}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.27, y: 0.053, z: -3.48}
-  m_LocalScale: {x: 2.2206104, y: 0.08659638, z: 2.2206104}
+  m_LocalScale: {x: 2.2206104, y: 0.0014920556, z: 2.2206104}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 506901801}
@@ -9354,7 +9350,7 @@ GameObject:
   - component: {fileID: 874828617}
   - component: {fileID: 874828616}
   m_Layer: 0
-  m_Name: CuboAmarillo
+  m_Name: Cubo Amarillo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10099,7 +10095,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: SONIDO
+  m_text: MUSICA
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -10284,7 +10280,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: bc0cdff0b0fdafc46bbdbda4b3717d71, type: 3}
       propertyPath: m_Name
-      value: EstrellaVerde
+      value: Estrella Verde
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: bc0cdff0b0fdafc46bbdbda4b3717d71, type: 3}
       propertyPath: m_RootOrder
@@ -13813,8 +13809,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.2086107, y: 2.7076108, z: 4.1530256}
-  m_Center: {x: -0.02165054, y: 1.3963082, z: 0.6009035}
+  m_Size: {x: 0.6394508, y: 2.3020825, z: 3.2895143}
+  m_Center: {x: -0.05854934, y: 1.1935437, z: 0.51494557}
 --- !u!114 &1359704467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14097,7 +14093,7 @@ GameObject:
   - component: {fileID: 1441778900}
   - component: {fileID: 1441778899}
   m_Layer: 0
-  m_Name: EsferaVerde
+  m_Name: Esfera Verde
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14251,7 +14247,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: SONIDO
+  m_text: MUSICA
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -15746,7 +15742,7 @@ GameObject:
   - component: {fileID: 1535082451}
   - component: {fileID: 1535082450}
   m_Layer: 0
-  m_Name: EsferaNaranja
+  m_Name: Esfera Naranja
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16758,7 +16754,7 @@ Transform:
   m_GameObject: {fileID: 1614925519}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.67, y: 0.053, z: -3.48}
-  m_LocalScale: {x: 2.2206104, y: 0.08659638, z: 2.2206104}
+  m_LocalScale: {x: 2.2206104, y: 0.0033852255, z: 2.2206104}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 506901801}
@@ -16879,7 +16875,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: f5e70b692f804d346a44df961b6ad5a8, type: 3}
       propertyPath: m_Name
-      value: CorazonAmarillo
+      value: Corazon Amarillo
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: f5e70b692f804d346a44df961b6ad5a8, type: 3}
       propertyPath: m_RootOrder
@@ -17115,7 +17111,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: bc0cdff0b0fdafc46bbdbda4b3717d71, type: 3}
       propertyPath: m_Name
-      value: EstrellaAmarilla
+      value: Estrella Amarilla
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: bc0cdff0b0fdafc46bbdbda4b3717d71, type: 3}
       propertyPath: m_RootOrder
@@ -19398,7 +19394,7 @@ GameObject:
   - component: {fileID: 1850610952}
   - component: {fileID: 1850610951}
   m_Layer: 0
-  m_Name: EsferaMorada
+  m_Name: Esfera Morada
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19588,7 +19584,7 @@ GameObject:
   - component: {fileID: 1865683313}
   - component: {fileID: 1865683312}
   m_Layer: 0
-  m_Name: EsferaRoja
+  m_Name: Esfera Roja
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19888,7 +19884,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 38b4a188717fa8447b2ccd7e89437193, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5ae678a6fbd35da4ca496c3ccd9e2be4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -21562,7 +21558,7 @@ GameObject:
   - component: {fileID: 2077495862}
   - component: {fileID: 2077495861}
   m_Layer: 0
-  m_Name: CuboNaranja
+  m_Name: Cubo Naranja
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21716,10 +21712,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'NIVEL 2
-
-
-    SONIDOS'
+  m_text: ANIMALES Y SUS SONIDOS
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -21728,8 +21721,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4278650631
+  m_fontColor: {r: 0.028301895, g: 0.028301895, b: 0.028301895, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -21854,7 +21847,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: SONIDO
+  m_text: MUSICA
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -22075,7 +22068,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: f5e70b692f804d346a44df961b6ad5a8, type: 3}
       propertyPath: m_Name
-      value: CorazonVerde
+      value: Corazon Verde
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: f5e70b692f804d346a44df961b6ad5a8, type: 3}
       propertyPath: m_RootOrder
@@ -22344,7 +22337,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "NIVEL 1\n\nB\xDASQUEDA"
+  m_text: "B\xDASQUEDA DE FIGURAS"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -22824,7 +22817,7 @@ GameObject:
   - component: {fileID: 2140034589}
   - component: {fileID: 2140034592}
   m_Layer: 0
-  m_Name: CuboRojo
+  m_Name: Cubo Rojo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

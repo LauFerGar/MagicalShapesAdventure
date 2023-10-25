@@ -12,7 +12,7 @@ public class ConfiguracionFondo : MonoBehaviour
         // Obtener la resolución de pantalla actual del dispositivo
         float screenWidth = Screen.width;
         float screenHeight = Screen.height;
-
+        
         // Ajusta la escala del CanvasScaler
         CanvasScaler canvasScaler = GetComponent<CanvasScaler>();
         canvasScaler.referenceResolution = new Vector2(screenWidth, screenHeight);

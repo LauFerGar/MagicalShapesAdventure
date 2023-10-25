@@ -34,7 +34,15 @@ public class DialogoJuegoBuscar : MonoBehaviour
     {
         if (indiceActual < numeroAdivinar)
         {
-            textoDialogo.text = "Selecciona " + figurasAleatorias[indiceActual].name;
+            if (figurasAleatorias[indiceActual].name.Contains("Esfera") || figurasAleatorias[indiceActual].name.Contains("Estrella"))
+            {
+                textoDialogo.text = "Busca la " + figurasAleatorias[indiceActual].name;
+            }
+            else
+            {
+                textoDialogo.text = "Busca el " + figurasAleatorias[indiceActual].name;
+            }
+            
         }
         else if (indiceActual == numeroAdivinar && finalizado == false)
         {
@@ -131,7 +139,14 @@ public class DialogoJuegoBuscar : MonoBehaviour
 
         }
 
-        textoDialogo.text = "Selecciona " + figurasAleatorias[indiceActual].name;
+        if (figurasAleatorias[indiceActual].name.Contains("Esfera") || figurasAleatorias[indiceActual].name.Contains("Estrella"))
+        {
+            textoDialogo.text = "Busca la " + figurasAleatorias[indiceActual].name;
+        }
+        else
+        {
+            textoDialogo.text = "Busca el " + figurasAleatorias[indiceActual].name;
+        }
 
         dialogo.onClick.AddListener(SeguirDialogo);
     }

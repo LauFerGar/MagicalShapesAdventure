@@ -128,7 +128,7 @@ public class AnimacionBoton : MonoBehaviour
         else
         {
             //Debug.Log("Ese no es el animal. Pulsa de nuevo");
-            dialogo.text = "Animal incorrecto. Pulsa PLAY de nuevo";
+            dialogo.text = "Animal incorrecto";
         }
     }
 
@@ -147,6 +147,7 @@ public class AnimacionBoton : MonoBehaviour
         juegoBuscar.gameObject.SetActive(true);
         juegoMemoria.gameObject.SetActive(true);
         juegoSonidos.gameObject.SetActive(true);
+        volver.gameObject.SetActive(true);
 
         GenerarAnimalesAleatorios generar = FindAnyObjectByType<GenerarAnimalesAleatorios>();
 
